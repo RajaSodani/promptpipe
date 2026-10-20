@@ -42,7 +42,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "prepublishOnly": "npm run typecheck && npm test && npm run build",
-    "demo": "tsx examples/fallback-demo.ts"
+    "demo": "tsx examples/fallback-demo.ts",
+    "prepare": "tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "@anthropic-ai/sdk": ">=0.60.0"
