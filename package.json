@@ -1,0 +1,63 @@
+{
+  "name": "promptpipe",
+  "version": "0.1.0",
+  "description": "LLM calls that fail gracefully: provider fallbacks, schema-validated output, retries with backoff, and per-call cost tracking.",
+  "license": "MIT",
+  "author": "Raja Sodani",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RajaSodani/promptpipe.git"
+  },
+  "keywords": [
+    "llm",
+    "claude",
+    "gemini",
+    "groq",
+    "openai",
+    "fallback",
+    "retry",
+    "structured-output",
+    "standard-schema"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./anthropic": {
+      "types": "./dist/providers/anthropic.d.ts",
+      "import": "./dist/providers/anthropic.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "demo": "tsx examples/fallback-demo.ts"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/sdk": ">=0.60.0"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/sdk": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0",
+    "zod": "^4.0.0"
+  }
+}
